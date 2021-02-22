@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/car"
+            android:title="@string/menu_Marcas" />
+        <item
+            android:id="@+id/nav_user"
+            android:icon="@drawable/user"
+            android:title="@string/menu_User" />
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/settings_24"
+            android:title="@string/action_settings" />
+    </group>
+    <group xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:checkableBehavior="all">
+
+        <item android:title="@string/communicate">
+            <menu>
+                <item
+                    android:id="@+id/share"
+                    android:icon="@drawable/share_24"
+                    android:orderInCategory="100"
+                    android:title="@string/menu_Share"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/send"
+                    android:icon="@drawable/send_24"
+                    android:orderInCategory="100"
+                    android:title="@string/menu_Send"
+                    app:showAsAction="always" />
+            </menu>
+        </item>
+    </group>
+</menu>

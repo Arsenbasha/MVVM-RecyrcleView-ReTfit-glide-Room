@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.arsenbasha.mp08.Fragmentos.HomeFragment"
+        android:label="@string/menu_Marcas"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_marca"
+            app:destination="@id/marca" />
+    </fragment>
+    <fragment
+        android:id="@+id/marca"
+        android:name="com.arsenbasha.mp08.Fragmentos.Fragmentmarca"
+        android:label="fragment_marca"
+        tools:layout="@layout/fragment_marca" >
+        <argument
+            android:name="marca"
+            app:argType="com.arsenbasha.mp08.Entidad.Marcas"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_user"
+        android:name="com.arsenbasha.mp08.Fragmentos.User"
+        android:label="user_fragment"
+        tools:layout="@layout/user_fragment" />
+
+
+</navigation>

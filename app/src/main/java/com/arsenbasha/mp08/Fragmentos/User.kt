@@ -39,10 +39,6 @@ class User : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-        if (id == R.id.share) {
-
-            //El código que se ejecutara al hacer click en esa opción
-        }
         return super.onOptionsItemSelected(item)
     }
 

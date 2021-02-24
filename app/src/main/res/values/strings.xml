@@ -14,7 +14,8 @@
     <string name="menu_Share">Share</string>
     <string name="menu_Marca">Marca</string>
     <string name="menu_Send">Enviar</string>
-
+    <string name="reintentar">reintentar</string>
+    reintentar
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
     <string name="sync_header">Sync</string>

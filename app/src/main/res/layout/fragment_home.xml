@@ -1,51 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragmentos.HomeFragment"
-    tools:ignore="InvalidId">
+    xmlns:tools="http://schemas.android.com/tools">
+<!--
+    <data>
+        <import type="android.view.View"/>
+        <variable name="viewModel" type="com.arsenbasha.mp08.Fragmentos.HomeViewModel"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refescar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    </data>
+-->
+    <RelativeLayout
+        android:id="@+id/home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <ImageView
-        android:id="@+id/conexion"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/siconexion"
+        tools:context=".Fragmentos.HomeFragment"
+        tools:ignore="InvalidId">
 
-        />
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refescar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!-- app:onRefreshListener="@{() -> viewModel.callGetMarcas(View,context,true)}"> -->
 
-    <ProgressBar
-        android:id="@+id/progreso"
-        style="?android:progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <Button
-        android:id="@+id/volver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/conexion"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:text="Volver a INTENTAR" />
+        <ImageView
+            android:id="@+id/conexion"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/siconexion"
+
+            />
+
+        <ProgressBar
+            android:id="@+id/progreso"
+            style="?android:progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/volver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/conexion"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="@string/reintentar">
+
+        </Button>
+          <!--  android:onClick="@{() -> viewModel.callGetMarcas(View,context,false)}"/>-->
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

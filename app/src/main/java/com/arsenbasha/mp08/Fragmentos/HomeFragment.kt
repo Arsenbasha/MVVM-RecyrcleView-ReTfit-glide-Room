@@ -27,13 +27,13 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         binding = FragmentHomeBinding.bind(root)
-        binding.progreso.isGone=false
+        binding.progreso.isGone = false
 
-        homeViewModel.callGetMarcas(root, context,false)
+        homeViewModel.callGetMarcas(root, context, false)
         val refrescar = binding.refescar
         refrescar.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
-            homeViewModel.callGetMarcas(root, context,true)
-            refrescar.setRefreshing(false);
+            homeViewModel.callGetMarcas(root, context, true)
+            refrescar.setRefreshing(false)
         })
 
         homeViewModel.findAllMarcas().observe(viewLifecycleOwner, Observer { v ->

@@ -5,10 +5,12 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -74,6 +76,10 @@ class MainActivity : AppCompatActivity() {
         Glide.with(this).load(user.logo).placeholder(R.drawable.progressbar)
             .error(R.drawable.error).into(perfil)
 
+        /*val header = findViewById<LinearLayout>(R.id.headerDrawer)
+        header.setOnClickListener { v ->
+           v.findNavController().navigate(R.id.nav_user)
+        }*/
         return true
     }
 

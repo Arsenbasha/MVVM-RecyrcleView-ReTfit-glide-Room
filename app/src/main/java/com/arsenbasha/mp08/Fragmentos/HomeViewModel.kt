@@ -10,12 +10,14 @@ import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.arsenbasha.mp08.Dao.MarcasDao
 import com.arsenbasha.mp08.Dao.MarcasDaoDB
 import com.arsenbasha.mp08.R
 import com.arsenbasha.mp08.Entidad.Marcas
 import com.arsenbasha.mp08.Interfaz.Instancia
 import com.arsenbasha.mp08.Interfaz.JsonApi
+import com.arsenbasha.mp08.databinding.FragmentHomeBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +26,6 @@ import retrofit2.Response
 class HomeViewModel() : ViewModel() {
     lateinit var marcasDao: MarcasDao
     lateinit var marcas: List<Marcas>
-
     fun callGetMarcas(view: View, context: Context?, refrezcar: Boolean) {
         val interfaz: JsonApi = Instancia.getinstancia().create(JsonApi::class.java)
         val resultados = interfaz.getDataFromJson()
@@ -32,7 +33,7 @@ class HomeViewModel() : ViewModel() {
         val conexion = view.findViewById<ImageView>(com.arsenbasha.mp08.R.id.conexion)
         val loadingView = view.findViewById<ProgressBar>(com.arsenbasha.mp08.R.id.progreso)
         val volver = view.findViewById<Button>(R.id.volver)
-
+        val refresh = view.findViewById<SwipeRefreshLayout>(R.id.refescar)
         if (marcasDao.getAll().isEmpty() || refrezcar) {
             resultados.enqueue(object : Callback<List<Marcas>> {
                 override fun onFailure(call: Call<List<Marcas>>, t: Throwable) {
@@ -40,11 +41,15 @@ class HomeViewModel() : ViewModel() {
                     conexion.isGone = false
                     volver.isGone = false
                     Log.d("INFO", "${t.message}")
-                    Toast.makeText(context, "No se han podido cargar los datos ${t.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "No se han podido cargar los datos ${t.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     volver.setOnClickListener {
-                        callGetMarcas(view,context,false)
+                        callGetMarcas(view, context, false)
                     }
-                    if (!marcasDao.getAll().isEmpty())ocultar(loadingView, conexion, volver)
+                    if (!marcasDao.getAll().isEmpty()) ocultar(loadingView, conexion, volver)
                 }
 
                 override fun onResponse(
